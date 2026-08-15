@@ -144,6 +144,7 @@ tasks.named('processResources', ProcessResources) {
             curseforge_url                      : "https://mods.cf/${project.curseforge_id}",
             update_url                          : update_url,
             mod_license                         : mod_license,
+            issue_url                           : issue_url,
             mod_authors                         : mod_authors,
 
             minecraft_version                   : minecraft_version,
@@ -151,7 +152,7 @@ tasks.named('processResources', ProcessResources) {
     ]
     inputs.property('replaceProperties', replaceProperties)
 
-    filesMatching(['mcmod.info']) {
+    filesMatching(['META-INF/mods.toml']) {
         expand replaceProperties
     }
 }

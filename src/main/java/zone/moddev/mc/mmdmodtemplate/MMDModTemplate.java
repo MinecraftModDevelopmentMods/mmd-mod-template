@@ -2,7 +2,7 @@ package zone.moddev.mc.mmdmodtemplate;
 
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(modid = MMDModTemplate.MOD_ID, name = MMDModTemplate.MOD_NAME)
+@Mod(MMDModTemplate.MOD_ID)
 public class MMDModTemplate {
 
     public static final String MOD_ID = "mmdmodtemplate";

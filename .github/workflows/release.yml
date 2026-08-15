@@ -97,7 +97,7 @@ jobs:
         with:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           # This is the projects CurseForge ID
-          curseforge-id: 341834
+          curseforge-id: 000000
           # The mods version, this gets pulled from the Github tag
           version: ${{ env.TAG }}
           changelog-file: CHANGELOG.md
@@ -108,7 +108,7 @@ jobs:
             forge
           # The version or versions of Minecraft that this mod will run on
           game-versions: |
-            [1.10,1.10.2)
+            [1.11,1.11.2)
           environment: client | server
           files: |
             build/libs/!(*-@(sources|javadoc)).jar

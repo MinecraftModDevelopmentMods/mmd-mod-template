@@ -108,7 +108,7 @@ jobs:
             forge
           # The version or versions of Minecraft that this mod will run on
           game-versions: |
-            [1.14,1.14.4)
+            [1.15,1.15.2)
           environment: client | server
           files: |
             build/libs/!(*-@(sources|javadoc)).jar

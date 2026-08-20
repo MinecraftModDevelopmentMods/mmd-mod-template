@@ -97,7 +97,8 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           # The mods version, this gets pulled from the Github tag
           version: ${{ env.TAG }}
-          changelog-file: CHANGELOG.*
+          # Disabled the changelog file system until I can talk to the author of the tool.
+          # changelog-file: CHANGELOG.*
           # The release type, can be release, beta or alpha
           version-type: release
           environment: client | server

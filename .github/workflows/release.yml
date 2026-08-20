@@ -10,6 +10,7 @@ env:
   MAVEN_UPLOAD_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
   MAVEN_UPLOAD_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
   MAVEN_UPLOAD_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
+  CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
   TAG: ${{ github.ref_name }}
 
 jobs:
@@ -94,7 +95,7 @@ jobs:
         if: matrix.platform == 'Curseforge'
         uses: Kira-NT/mc-publish@v3.3.1
         with:
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
           # The mods version, this gets pulled from the Github tag
           version: ${{ env.TAG }}
           # Disabled the changelog file system until I can talk to the author of the tool.

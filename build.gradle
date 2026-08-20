@@ -12,7 +12,7 @@ def isPreviewBuild = tag.orNull?.matches(".+-.+") ?: false
 def buildNumber = tag.orElse(providers.environmentVariable("BUILD_NUMBER").map { "build.${it}" })
 
 version = tag.orElse(provider {
-    def result = "${minecraft_version}-${mod_version}-development"
+    def result = "${mod_version}-development"
     if (isPreviewBuild && !tag.isPresent()) {
         result += buildNumber.map { "+${it}" }.getOrElse("")
     }
@@ -27,6 +27,7 @@ base.archivesName = mod_archive_name
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(8)
     withSourcesJar()
+    withJavadocJar()
 }
 
 minecraft {
@@ -142,6 +143,7 @@ tasks.named('processResources', ProcessResources) {
             mod_id                              : mod_id,
             mod_description                     : mod_description,
             curseforge_url                      : "https://mods.cf/${project.curseforge_id}",
+            curseforge_id                       : curseforge_id,
             update_url                          : update_url,
             mod_license                         : mod_license,
             issue_url                           : issue_url,

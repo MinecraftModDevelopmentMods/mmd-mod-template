@@ -49,3 +49,7 @@ mandatory=true
 versionRange="[${minecraft_version},)"
 ordering="NONE"
 side="BOTH"
+
+[mc-publish]
+curseforge="${curseforge_id}"
+loaders=["forge"]

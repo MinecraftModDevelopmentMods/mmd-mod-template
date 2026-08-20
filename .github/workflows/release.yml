@@ -80,9 +80,8 @@ jobs:
         platform: [ 'Curseforge' ]
     needs: [build]
     runs-on: ubuntu-latest
-    # outputs:
-      # This is used later when we have a mods.toml or fabric.mods file or so on.
-      # curseforge_id: ${{ steps.store_ids.outputs.curseforge_id }}
+    outputs:
+      curseforge_id: ${{ steps.store_ids.outputs.curseforge_id }}
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v8
@@ -96,19 +95,11 @@ jobs:
         uses: Kira-NT/mc-publish@v3.3.1
         with:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          # This is the projects CurseForge ID
-          curseforge-id: 000000
           # The mods version, this gets pulled from the Github tag
           version: ${{ env.TAG }}
           changelog-file: CHANGELOG.md
           # The release type, can be release, beta or alpha
-          version-type: beta
-          # The modloaders this release supports
-          loaders: |
-            forge
-          # The version or versions of Minecraft that this mod will run on
-          game-versions: |
-            [1.16,1.16.5)
+          version-type: release
           environment: client | server
           files: |
             build/libs/!(*-@(sources|javadoc)).jar

@@ -61,7 +61,6 @@ jobs:
         uses: Kira-NT/mc-publish@v3.3.1
         continue-on-error: true
         with:
-          github-token: ${{ github.token }} # Used to get the changelog from GitHub commits.
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           # The unique CurseForge project ID for this mod.
           curseforge-id: 238065

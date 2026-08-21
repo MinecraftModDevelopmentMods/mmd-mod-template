@@ -19,7 +19,6 @@ jobs:
     permissions:
       contents: write # Required for mc-publish to create a GitHub release.
 
-
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v7

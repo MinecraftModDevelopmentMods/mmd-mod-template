@@ -7,6 +7,7 @@ plugins {
     id "net.minecraftforge.gradle" version "[7.0.29,8.0)"
 }
 
+def ENV = System.getenv()
 def tag = providers.environmentVariable("TAG")
 def isPreviewBuild = tag.orNull?.matches(".+-.+") ?: false
 def buildNumber = tag.orElse(providers.environmentVariable("BUILD_NUMBER").map { "build.${it}" })
@@ -196,14 +197,23 @@ def renameJar = renamer.classes(tasks.named('jar', Jar)) {
 }
 
 
-// Example configuration to allow publishing using the maven-publish plugin
 publishing {
-    repositories {
-        maven { url = project.layout.projectDirectory.dir('mcmodsrepo').asFile.toURL() }
+    publications {
+        "mavenJava${project.name}"(MavenPublication) {
+            artifactId "${project.name}"
+            from components.java
+        }
     }
-
-    publications.register('mavenJava', MavenPublication) {
-        from components.java
+    repositories {
+        if (ENV.MAVEN_UPLOAD_URL) {
+            maven {
+                url = ENV.MAVEN_UPLOAD_URL
+                credentials {
+                    username = ENV.MAVEN_UPLOAD_USERNAME
+                    password = ENV.MAVEN_UPLOAD_PASSWORD
+                }
+            }
+        }
     }
 }
 

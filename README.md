@@ -22,6 +22,3 @@ On Linux or macOS:
 ./gradlew eclipse genEclipseRuns
 ./gradlew build
 ```
-
-`setupDecompWorkspace` was a ForgeGradle 2 task and is not used by this
-template as we use ForgeGradle 7 instead.
